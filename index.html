@@ -1,0 +1,510 @@
+<section id="hs-connect">
+  <style>
+    #hs-connect {
+      --hs-orange: #f36b21;
+      --hs-navy: #102b4e;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 55px 20px;
+      background: transparent;
+      color: var(--hs-navy);
+      box-sizing: border-box;
+    }
+
+    #hs-connect *,
+    #hs-connect *::before,
+    #hs-connect *::after {
+      box-sizing: border-box;
+    }
+
+    #hs-connect .hs-container {
+      position: relative;
+      max-width: 1120px;
+      margin: auto;
+      padding: 58px 55px;
+      overflow: hidden;
+      border: 1px solid #e9edf3;
+      border-radius: 28px;
+      background: linear-gradient(120deg, #ffffff 0%, #fff8f2 100%);
+      box-shadow: 0 18px 55px rgba(16, 43, 78, 0.07);
+    }
+
+    #hs-connect .hs-container::before {
+      content: "";
+      position: absolute;
+      width: 370px;
+      height: 370px;
+      border: 1px solid rgba(243, 107, 33, 0.15);
+      border-radius: 50%;
+      right: -115px;
+      top: -170px;
+      pointer-events: none;
+    }
+
+    #hs-connect .hs-container::after {
+      content: "";
+      position: absolute;
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      background: rgba(243, 107, 33, 0.06);
+      right: 65px;
+      bottom: -205px;
+      pointer-events: none;
+    }
+
+    #hs-connect .hs-layout {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    #hs-connect .hs-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 22px;
+      color: var(--hs-orange);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    #hs-connect .hs-eyebrow::before {
+      content: "";
+      width: 27px;
+      height: 2px;
+      background: var(--hs-orange);
+    }
+
+    #hs-connect .hs-title {
+      max-width: 570px;
+      margin: 0 0 20px;
+      color: var(--hs-navy);
+      font-size: clamp(35px, 4.5vw, 55px);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -1.8px;
+    }
+
+    #hs-connect .hs-title span {
+      color: var(--hs-orange);
+    }
+
+    #hs-connect .hs-description {
+      max-width: 490px;
+      margin: 0 0 28px;
+      color: #68798d;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    #hs-connect .hs-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 13px;
+    }
+
+    #hs-connect .hs-button {
+      min-height: 49px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 11px;
+      padding: 14px 23px;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
+    }
+
+    #hs-connect .hs-button-primary {
+      color: #ffffff;
+      background: var(--hs-orange);
+      box-shadow: 0 8px 20px rgba(243, 107, 33, 0.2);
+    }
+
+    #hs-connect .hs-button-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 13px 26px rgba(243, 107, 33, 0.27);
+    }
+
+    #hs-connect .hs-button-secondary {
+      color: var(--hs-navy);
+      border-color: #dfe5ed;
+      background: #ffffff;
+    }
+
+    #hs-connect .hs-button-secondary:hover {
+      border-color: var(--hs-orange);
+      color: var(--hs-orange);
+      transform: translateY(-2px);
+    }
+
+    #hs-connect .hs-arrow {
+      font-size: 19px;
+      line-height: 1;
+    }
+
+    /* Animated visual area */
+
+    #hs-connect .hs-visual {
+      position: relative;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #hs-connect .hs-orbit {
+      position: absolute;
+      width: 285px;
+      height: 285px;
+      border: 1px dashed rgba(16, 43, 78, 0.16);
+      border-radius: 50%;
+      animation: hs-rotate 35s linear infinite;
+    }
+
+    #hs-connect .hs-orbit::before,
+    #hs-connect .hs-orbit::after {
+      content: "";
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--hs-orange);
+    }
+
+    #hs-connect .hs-orbit::before {
+      top: 32px;
+      right: 42px;
+    }
+
+    #hs-connect .hs-orbit::after {
+      bottom: 34px;
+      left: 28px;
+      background: #f9c29f;
+    }
+
+    #hs-connect .hs-center-card {
+      position: relative;
+      z-index: 2;
+      width: 205px;
+      padding: 28px 22px;
+      border-radius: 23px;
+      background: var(--hs-navy);
+      box-shadow: 0 20px 45px rgba(16, 43, 78, 0.19);
+      color: #ffffff;
+      text-align: center;
+      animation: hs-float 4s ease-in-out infinite;
+    }
+
+    #hs-connect .hs-center-icon {
+      width: 65px;
+      height: 65px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 18px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      font-size: 31px;
+    }
+
+    #hs-connect .hs-center-card h3 {
+      margin: 0 0 9px;
+      color: #ffffff;
+      font-size: 20px;
+      line-height: 1.3;
+    }
+
+    #hs-connect .hs-center-card p {
+      margin: 0;
+      color: #c9d7e8;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    #hs-connect .hs-float-card {
+      position: absolute;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 14px 16px;
+      border: 1px solid #edf0f4;
+      border-radius: 13px;
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(16, 43, 78, 0.09);
+      animation: hs-float 4.5s ease-in-out infinite;
+    }
+
+    #hs-connect .hs-float-card.card-top {
+      top: 20px;
+      right: -5px;
+    }
+
+    #hs-connect .hs-float-card.card-bottom {
+      bottom: 20px;
+      left: -5px;
+      animation-delay: 1s;
+    }
+
+    #hs-connect .hs-small-icon {
+      width: 37px;
+      height: 37px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: #fff0e7;
+      font-size: 18px;
+    }
+
+    #hs-connect .hs-float-card strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--hs-navy);
+      font-size: 12px;
+    }
+
+    #hs-connect .hs-float-card small {
+      display: block;
+      color: #8190a1;
+      font-size: 10px;
+    }
+
+    #hs-connect .hs-bottom-note {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid #eceff3;
+      color: #718095;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    #hs-connect .hs-note-dot {
+      width: 7px;
+      height: 7px;
+      flex: 0 0 7px;
+      border-radius: 50%;
+      background: #39ae78;
+    }
+
+    @keyframes hs-float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-9px);
+      }
+    }
+
+    @keyframes hs-rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Tablet */
+
+    @media (max-width: 850px) {
+      #hs-connect .hs-container {
+        padding: 42px 30px;
+      }
+
+      #hs-connect .hs-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      #hs-connect .hs-visual {
+        min-height: 330px;
+      }
+
+      #hs-connect .hs-float-card.card-top {
+        right: 5%;
+      }
+
+      #hs-connect .hs-float-card.card-bottom {
+        left: 5%;
+      }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 480px) {
+      #hs-connect {
+        padding: 30px 12px;
+      }
+
+      #hs-connect .hs-container {
+        padding: 34px 22px;
+        border-radius: 20px;
+      }
+
+      #hs-connect .hs-title {
+        font-size: 37px;
+        letter-spacing: -1px;
+      }
+
+      #hs-connect .hs-description {
+        font-size: 14px;
+      }
+
+      #hs-connect .hs-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      #hs-connect .hs-button {
+        width: 100%;
+      }
+
+      #hs-connect .hs-visual {
+        min-height: 295px;
+        transform: scale(0.94);
+      }
+
+      #hs-connect .hs-orbit {
+        width: 250px;
+        height: 250px;
+      }
+
+      #hs-connect .hs-float-card.card-top {
+        right: -7px;
+      }
+
+      #hs-connect .hs-float-card.card-bottom {
+        left: -7px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #hs-connect .hs-orbit,
+      #hs-connect .hs-center-card,
+      #hs-connect .hs-float-card {
+        animation: none;
+      }
+
+      #hs-connect .hs-button {
+        transition: none;
+      }
+    }
+  </style>
+
+  <div class="hs-container">
+
+    <div class="hs-layout">
+
+      <!-- LEFT CONTENT -->
+
+      <div class="hs-content">
+
+        <div class="hs-eyebrow">
+          We're Here to Help
+        </div>
+
+        <h2 class="hs-title">
+          Big Dreams.<br>
+          Right <span>Guidance.</span>
+        </h2>
+
+        <p class="hs-description">
+          Every great journey begins with a conversation.
+          Whether you have a question or need help with your next step,
+          we're here to make things easier for you.
+        </p>
+
+        <div class="hs-actions">
+
+          <a
+            class="hs-button hs-button-primary"
+            href="https://higher.study/enquiry/design-admissions-2027"
+          >
+            Let's Connect
+            <span class="hs-arrow">→</span>
+          </a>
+
+          <a
+            class="hs-button hs-button-secondary"
+            href="https://higher.study/enquiry/design-admissions-2027"
+          >
+            Get in Touch
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT ANIMATED VISUAL -->
+
+      <div class="hs-visual">
+
+        <div class="hs-orbit"></div>
+
+        <div class="hs-center-card">
+
+          <div class="hs-center-icon">💬</div>
+
+          <h3>Let's Talk</h3>
+
+          <p>
+            Your questions matter.
+            Let's find the right next step together.
+          </p>
+
+        </div>
+
+        <div class="hs-float-card card-top">
+
+          <div class="hs-small-icon">🤝</div>
+
+          <div>
+            <strong>Personal Support</strong>
+            <small>We're here for you</small>
+          </div>
+
+        </div>
+
+        <div class="hs-float-card card-bottom">
+
+          <div class="hs-small-icon">✨</div>
+
+          <div>
+            <strong>Your Journey Matters</strong>
+            <small>One step at a time</small>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BOTTOM MESSAGE -->
+
+    <div class="hs-bottom-note">
+      <span class="hs-note-dot"></span>
+      Have a question? Reach out and take the next step with confidence.
+    </div>
+
+  </div>
+</section>
